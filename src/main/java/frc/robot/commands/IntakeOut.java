@@ -6,14 +6,21 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import frc.robot.Constants;
+import edu.wpi.first.wpilibj.XboxController;
 
 public class IntakeOut extends CommandBase {
+  Intake noteIntake = null;
+  double power = 0.0;
+  XboxController xboxController = null;
+  boolean done = false;
   /** Creates a new IntakeOut. */
-  public IntakeOut() {
+  public IntakeOut(Intake noteIntake, double power, XboxController xboxController) {
     // Use addRequirements() here to declare subsystem dependencies.
+    this.noteIntake = noteIntake;
+    this.power = power;
+    this.xboxController = xboxController;
+    //sensor initialization
+    addRequirements(noteIntake);
   }
 
   // Called when the command is initially scheduled.
@@ -22,11 +29,15 @@ public class IntakeOut extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    noteIntake.intakeRun(power);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    noteIntake.stop();
+  }
 
   // Returns true when the command should end.
   @Override
@@ -34,3 +45,4 @@ public class IntakeOut extends CommandBase {
     return false;
   }
 }
+
