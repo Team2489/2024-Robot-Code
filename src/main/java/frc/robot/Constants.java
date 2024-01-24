@@ -19,4 +19,6 @@ public final class Constants {
   public static final int LEFT_FRONT_SPARK = 4;
   public static final int LEFT_BACK_SPARK = 3;
   public static final int XBOX_CONTROLLER_PORT = 0;
+  public static final int FRONT_INTAKE = 0;//arbitrary
+  public static final int BACK_INTAKE = 0;//arbitrary
 }
