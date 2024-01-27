@@ -15,7 +15,7 @@ public class Intake extends SubsystemBase {
   /** Creates a new Intake. */
   public Intake() {
     frontIntake = new WPI_TalonSRX(Constants.FRONT_INTAKE);
-    backIntake = new WPI_TalonSRX(Constants.BACK_INTAKE;
+    backIntake = new WPI_TalonSRX(Constants.BACK_INTAKE);
 
     frontIntake.enableVoltageCompensation(12);
     backIntake.enableVoltageCompensation(12);
