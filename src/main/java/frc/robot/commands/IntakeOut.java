@@ -9,9 +9,9 @@ import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.XboxController;
 
 public class IntakeOut extends CommandBase {
-  Intake noteIntake = null;
+  Intake noteIntake;
   double power = 0.0;
-  XboxController xboxController = null;
+  XboxController xboxController;
   boolean done = false;
   /** Creates a new IntakeOut. */
   public IntakeOut(Intake noteIntake, double power, XboxController xboxController) {

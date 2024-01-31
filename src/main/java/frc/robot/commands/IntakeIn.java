@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class IntakeIn extends CommandBase {
-  Intake noteIntake = null;
+  Intake noteIntake;
   double power = 0.0;
-  XboxController xboxController = null;
+  XboxController xboxController;
   boolean done = false;
-  DigitalInput digitalInput = null;
-  
+  DigitalInput digitalInput;
+
   /** Creates a new IntakeIn. */
   public IntakeIn(Intake noteIntake, double power, XboxController xboxController, DigitalInput digitalInput) { //add sensor parameter
     // Use addRequirements() here to declare subsystem dependencies.
@@ -44,8 +44,8 @@ public class IntakeIn extends CommandBase {
       if(done) {
         noteIntake.stop();
       } else if (xboxController.getLeftBumper()) {
-        noteIntake.runFrontIntake(-power);
-        noteIntake.runBackIntake(0.5);//arbitrary
+        noteIntake.runFrontIntake(power);
+        noteIntake.runBackIntake(-0.5);//arbitrary
       }
   }
 

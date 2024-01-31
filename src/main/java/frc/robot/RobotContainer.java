@@ -6,11 +6,17 @@ package frc.robot;
 
 
 import frc.robot.commands.DriveArcadeCustomized;
+import frc.robot.commands.IntakeIn;
+import frc.robot.commands.IntakeOut;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -24,6 +30,8 @@ public class RobotContainer {
   XboxController xboxController = new XboxController(Constants.XBOX_CONTROLLER_PORT);
   // The robot's subsystems and commands are defined here...
   DriveTrain dDrive = new DriveTrain();
+  Intake noteIntake;
+  DigitalInput digitalInput = new DigitalInput(Constants.LINE_BREAKER_PORT); 
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
 
@@ -44,6 +52,9 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
+
+    new JoystickButton(xboxController, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 1, xboxController, digitalInput));
+    new JoystickButton(xboxController, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, 1, xboxController));
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.

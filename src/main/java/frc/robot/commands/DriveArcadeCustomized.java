@@ -11,10 +11,10 @@ import frc.robot.subsystems.DriveTrain;
 
 public class DriveArcadeCustomized extends CommandBase {
   /** Creates a new DriveArcadeCustomized. */
-  DriveTrain driveTrain = null;
-  DoubleSupplier speed = null;
-  DoubleSupplier rotation = null;
-  XboxController xboxController = null;
+  DriveTrain driveTrain;
+  DoubleSupplier speed;
+  DoubleSupplier rotation;
+  XboxController xboxController;
   double creepRotationLimit = 0.0;
   double creepLimit = 0.0;
   double fastLimit =0.0;
