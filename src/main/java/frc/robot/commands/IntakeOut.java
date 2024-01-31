@@ -12,7 +12,7 @@ public class IntakeOut extends CommandBase {
   Intake noteIntake;
   double power = 0.0;
   XboxController xboxController;
-  boolean done = false;
+
   /** Creates a new IntakeOut. */
   public IntakeOut(Intake noteIntake, double power, XboxController xboxController) {
     // Use addRequirements() here to declare subsystem dependencies.

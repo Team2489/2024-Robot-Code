@@ -8,8 +8,8 @@ import frc.robot.Constants;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class Intake extends SubsystemBase {
-  public WPI_TalonSRX frontIntake;
-  public WPI_TalonSRX backIntake;
+  WPI_TalonSRX frontIntake;
+  WPI_TalonSRX backIntake;
   /** Creates a new Intake. */
   public Intake() {
     frontIntake = new WPI_TalonSRX(Constants.FRONT_INTAKE);
@@ -38,7 +38,7 @@ public class Intake extends SubsystemBase {
     frontIntake.set(0);
     backIntake.set(0);
   }
-
+  
 
   @Override
   public void periodic() {

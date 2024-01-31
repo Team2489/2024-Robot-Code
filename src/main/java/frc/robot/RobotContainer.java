@@ -11,9 +11,7 @@ import frc.robot.commands.IntakeOut;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -31,7 +29,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   DriveTrain dDrive = new DriveTrain();
   Intake noteIntake;
-  DigitalInput digitalInput = new DigitalInput(Constants.LINE_BREAKER_PORT); 
+  //DigitalInput digitalInput = new DigitalInput(Constants.LINE_BREAKER_PORT); 
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
 
@@ -42,23 +40,12 @@ public class RobotContainer {
     dDrive.setDefaultCommand(new DriveArcadeCustomized(dDrive, xboxController::getLeftY, xboxController::getRightX, 0.3, 0.2, 0.8, xboxController));
   }
 
-  /**
-   * Use this method to define your trigger->command mappings. Triggers can be created via the
-   * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
-   * predicate, or via the named factories in {@link
-   * edu.wpi.first.wpilibj2.command.button.CommandGenericHID}'s subclasses for {@link
-   * CommandXboxController Xbox}/{@link edu.wpi.first.wpilibj2.command.button.CommandPS4Controller
-   * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
-   * joysticks}.
-   */
+
   private void configureBindings() {
 
-    new JoystickButton(xboxController, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 1, xboxController, digitalInput));
-    new JoystickButton(xboxController, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, 1, xboxController));
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
-    // cancelling on release.
-  
+    //new JoystickButton(xboxController, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 1, xboxController)); // add digitalInput
+    //new JoystickButton(xboxController, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, 1, xboxController));
+    
   }
 
   /**

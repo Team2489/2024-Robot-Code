@@ -8,22 +8,20 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class IntakeIn extends CommandBase {
-  Intake noteIntake;
+  Intake noteIntake; 
   double power = 0.0;
   XboxController xboxController;
-  boolean done = false;
-  DigitalInput digitalInput;
+  //DigitalInput digitalInput;
 
   /** Creates a new IntakeIn. */
-  public IntakeIn(Intake noteIntake, double power, XboxController xboxController, DigitalInput digitalInput) { //add sensor parameter
+  public IntakeIn(Intake noteIntake, double power, XboxController xboxController) { //add sensor parameter
     // Use addRequirements() here to declare subsystem dependencies.
     this.noteIntake = noteIntake;
     this.power=power;
     this.xboxController = xboxController;
-    this.digitalInput = digitalInput;
+    //this.digitalInput = digitalInput;
     addRequirements(noteIntake);
   }
 
@@ -37,23 +35,13 @@ public class IntakeIn extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      if(!digitalInput.get()) {
-        done = true;
-        System.out.println(done);
-      }
-      if(done) {
-        noteIntake.stop();
-      } else if (xboxController.getLeftBumper()) {
-        noteIntake.runFrontIntake(power);
-        noteIntake.runBackIntake(-0.5);//arbitrary
-      }
+    noteIntake.intakeRun(power);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     noteIntake.stop();
-    done = false;
   }
 
   // Returns true when the command should end.
