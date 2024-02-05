@@ -4,41 +4,38 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
-public class IntakeAuton extends CommandBase {
-  // Intake for autonomous(intake in & out are for teleop using XboxController as a parameter)
-  Intake noteIntake = null;
+public class Shoot extends CommandBase {
+  Shooter shooter;
   double power = 0.0;
-  XboxController xboxController = null;
-  boolean done = false;
-  DigitalInput digitalInput = null;
-  
-  public IntakeAuton(Intake noteIntake, double power, DigitalInput digitalInput) {
+  // base class for shooting speaker and amp(coming soon)
+
+  public Shoot(Shooter shooter, double power) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.noteIntake = noteIntake;
-    this.power=power;
-    this.digitalInput = digitalInput;
-    addRequirements(noteIntake);
+    this.shooter = shooter;
+    this.power = power;
+    addRequirements(shooter);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    shooter.stop();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      noteIntake.intakeRun(1);
+    // Run it up first before shooting, possibly avoids note being stuck
+    shooter.shoot(power);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    noteIntake.stop();
+    shooter.stop();
   }
 
   // Returns true when the command should end.

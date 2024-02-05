@@ -6,20 +6,16 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake;
-import edu.wpi.first.wpilibj.XboxController;
 
 public class IntakeOut extends CommandBase {
   Intake noteIntake;
   double power = 0.0;
-  XboxController xboxController;
 
   /** Creates a new IntakeOut. */
-  public IntakeOut(Intake noteIntake, double power, XboxController xboxController) {
+  public IntakeOut(Intake noteIntake, double power) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.noteIntake = noteIntake;
     this.power = power;
-    this.xboxController = xboxController;
-    //sensor initialization
     addRequirements(noteIntake);
   }
 
@@ -30,7 +26,7 @@ public class IntakeOut extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    noteIntake.intakeRun(power);
+    noteIntake.intakeRun(-power);
   }
 
   // Called once the command ends or is interrupted.

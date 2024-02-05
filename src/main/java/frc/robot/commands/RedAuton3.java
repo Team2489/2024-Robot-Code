@@ -8,17 +8,16 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
 public class RedAuton3 extends SequentialCommandGroup {
   /** Creates a new RedAuton3. */
-  public RedAuton3(DriveTrain driveTrain, Intake IntakeAuton, DigitalInput digitalInput, double speed, double rotation) {
-    // Use addRequirements() here to declare subsystem dependencies.
+  public RedAuton3(DriveTrain driveTrain, Intake IntakeAuton, Shooter shooter, DigitalInput digitalInput) {
     addCommands(
-      new DriveAuton(driveTrain, 0.5, 1).withTimeout(0.5),
-      //shooter
-      new DriveAuton(driveTrain, 0.5, -1).withTimeout(0.5),
-      new DriveAuton(driveTrain, 1, 0).withTimeout(5),
-      new IntakeAuton(IntakeAuton, 1, digitalInput)
-    );
+        new DriveAuton(driveTrain, 0.5, 1).withTimeout(0.5),
+        new ShootSpeaker(shooter, 1),
+        new DriveAuton(driveTrain, 0.5, -1).withTimeout(0.5),
+        new DriveAuton(driveTrain, 1, 0).withTimeout(5),
+        new IntakeIn(IntakeAuton, 1, digitalInput));
   }
 }
