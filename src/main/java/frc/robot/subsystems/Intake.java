@@ -10,19 +10,13 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class Intake extends SubsystemBase {
-  CANSparkMax frontIntake;
-  CANSparkMax backIntake;
+  public CANSparkMax frontIntake;
+  public CANSparkMax backIntake;
 
   /** Creates a new Intake. */
   public Intake() {
     frontIntake = new CANSparkMax(Constants.FRONT_INTAKE, MotorType.kBrushed);
     backIntake = new CANSparkMax(Constants.BACK_INTAKE, MotorType.kBrushed);
-
-    frontIntake.enableVoltageCompensation(12);
-    backIntake.enableVoltageCompensation(12);
-
-    frontIntake.restoreFactoryDefaults();
-    backIntake.restoreFactoryDefaults();
 
     intakeRun(0);
   }

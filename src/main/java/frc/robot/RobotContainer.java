@@ -37,9 +37,9 @@ public class RobotContainer {
   XboxController xboxController2 = new XboxController(Constants.XBOX_CONTROLLER2_PORT);
 
   // The robot's subsystems and commands are defined here...
-  DriveTrain dDrive = new DriveTrain();
-  Intake noteIntake;
-  Shooter shooter;
+  DriveTrain dDrive= new DriveTrain();
+  Intake noteIntake = new Intake();
+  Shooter shooter = new Shooter();
   DigitalInput digitalInput = new DigitalInput(Constants.LINE_BREAKER_PORT); 
 
   SendableChooser<Command> chooser = new SendableChooser<>();
@@ -62,9 +62,9 @@ public class RobotContainer {
 
 
   private void configureBindings() {
-    new JoystickButton(xboxController2, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 1.0, digitalInput)); // add digitalInput
-    new JoystickButton(xboxController2, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, 1.0));
-    new JoystickButton(xboxController2, Button.kRightStick.value).whileTrue(new ShootSpeaker(shooter, 1.0));
+    //new JoystickButton(xboxController, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 1.0, digitalInput)); // add digitalInput
+    //new JoystickButton(xboxController, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, 1.0));
+    //new JoystickButton(xboxController2, Button.kRightStick.value).whileTrue(new ShootSpeaker(shooter, 1.0));
   }
 
   /**

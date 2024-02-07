@@ -21,8 +21,8 @@ public final class Constants {
   public static final int XBOX_CONTROLLER_PORT = 0;
   public static final int XBOX_CONTROLLER2_PORT = 1;
   public static final int LINE_BREAKER_PORT = 0;
-  public static final int FRONT_INTAKE = 2;//arbitrary
-  public static final int BACK_INTAKE = 4;//arbitrary
+  public static final int FRONT_INTAKE = 12;//arbitrary
+  public static final int BACK_INTAKE = 21;//arbitrary
   public static final int FRONT_SHOOTER_ROLLER = 2;//arbitrary
   public static final int BACK_SHOOTER_ROLLER = 4;//arbitrary
 }
