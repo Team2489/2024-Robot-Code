@@ -36,6 +36,7 @@ public class IntakeIn extends CommandBase {
     } else {
       noteIntake.intakeRun(power);
     }
+  //  noteIntake.intakeRun(power);
   }
 
   // Called once the command ends or is interrupted.

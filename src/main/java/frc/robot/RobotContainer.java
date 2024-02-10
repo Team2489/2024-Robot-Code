@@ -13,6 +13,7 @@ import frc.robot.commands.IntakeIn;
 import frc.robot.commands.IntakeOut;
 import frc.robot.commands.RedAuton2;
 import frc.robot.commands.RedAuton3;
+import frc.robot.commands.Shoot;
 import frc.robot.commands.ShootSpeaker;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
@@ -62,9 +63,11 @@ public class RobotContainer {
 
 
   private void configureBindings() {
-    //new JoystickButton(xboxController, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 1.0, digitalInput)); // add digitalInput
-    //new JoystickButton(xboxController, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, 1.0));
-    //new JoystickButton(xboxController2, Button.kRightStick.value).whileTrue(new ShootSpeaker(shooter, 1.0));
+    new JoystickButton(xboxController, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 1, digitalInput)); // add digitalInput
+  //  System.out.println("configureBindings run");
+    new JoystickButton(xboxController, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, 1));
+    new JoystickButton(xboxController, Button.kA.value).whileTrue(new Shoot(shooter, 1));
+    new JoystickButton(xboxController, Button.kB.value).whileTrue(new Shoot(shooter, 0.38));
   }
 
   /**

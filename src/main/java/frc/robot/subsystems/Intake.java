@@ -22,7 +22,7 @@ public class Intake extends SubsystemBase {
   }
 
   public void intakeRun(double power) {
-    frontIntake.set(power);
+    frontIntake.set(-power);
     backIntake.set(-power);
   }
 
