@@ -4,10 +4,10 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Shooter;
 
-public class Shoot extends CommandBase {
+public class Shoot extends Command {
   Shooter shooter;
   double power = 0.0;
   // base class for shooting speaker and amp(coming soon)

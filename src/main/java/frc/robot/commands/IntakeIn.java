@@ -4,11 +4,11 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.subsystems.Intake;
 
-public class IntakeIn extends CommandBase {
+public class IntakeIn extends Command {
   Intake noteIntake;
   double power = 0.0;
   DigitalInput digitalInput;

@@ -4,10 +4,10 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.DriveTrain;
 
-public class DriveAuton extends CommandBase {
+public class DriveAuton extends Command {
   //DriveAuton specifically for DriveAuton without XboxController
     DriveTrain driveTrain = null;
     double speed = 0.0;
