@@ -8,13 +8,13 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.subsystems.Intake;
 
-public class IntakeIn extends Command {
+public class IntakeForShooting extends Command {
   Intake noteIntake;
   double power = 0.0;
   DigitalInput digitalInput;
 
   /** Creates a new IntakeIn. */
-  public IntakeIn(Intake noteIntake, double power, DigitalInput digitalInput) { // add                                                                                              // parameter
+  public IntakeForShooting(Intake noteIntake, double power) { // add                                                                                              // parameter
     // Use addRequirements() here to declare subsystem dependencies.
     this.noteIntake = noteIntake;
     this.power = power;
@@ -31,11 +31,8 @@ public class IntakeIn extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (!digitalInput.get()) {
-      noteIntake.stop();
-    } else {
-      noteIntake.intakeRun(power);
-    }
+    noteIntake.intakeRun(power);
+  
   //  noteIntake.intakeRun(power);
   }
   // Called once the command ends or is interrupted.

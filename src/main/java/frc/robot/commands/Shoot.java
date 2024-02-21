@@ -10,12 +10,16 @@ import frc.robot.subsystems.Shooter;
 public class Shoot extends Command {
   Shooter shooter;
   double power = 0.0;
+  double runFrontRollerPower = 0.0;
+  double runBackRollerPower = 0.0;
   // base class for shooting speaker and amp(coming soon)
 
-  public Shoot(Shooter shooter, double power) {
+  public Shoot(Shooter shooter, double runFrontRollerPower, double runBackRollerPower) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.shooter = shooter;
-    this.power = power;
+    // this.power = power;
+    this.runFrontRollerPower = runFrontRollerPower;
+    this.runBackRollerPower = runBackRollerPower;
     addRequirements(shooter);
   }
 
@@ -29,7 +33,8 @@ public class Shoot extends Command {
   @Override
   public void execute() {
     // Run it up first before shooting, possibly avoids note being stuck
-    shooter.shoot(power);
+    shooter.runFrontRoller(runFrontRollerPower);
+    shooter.runBackRoller(runBackRollerPower);
   }
 
   // Called once the command ends or is interrupted.

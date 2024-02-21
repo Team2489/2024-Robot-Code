@@ -28,6 +28,8 @@ public class Shooter extends SubsystemBase {
     backRoller.restoreFactoryDefaults();
     
     shoot(0);
+    runFrontRoller(0);
+    runBackRoller(0);
   }
 
   public void shoot(double power) {

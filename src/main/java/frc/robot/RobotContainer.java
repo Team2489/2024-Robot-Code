@@ -9,6 +9,7 @@ import frc.robot.commands.Auton1;
 import frc.robot.commands.BlueAuton2;
 import frc.robot.commands.BlueAuton3;
 import frc.robot.commands.DriveArcadeCustomized;
+import frc.robot.commands.IntakeForShooting;
 import frc.robot.commands.IntakeIn;
 import frc.robot.commands.IntakeOut;
 import frc.robot.commands.RedAuton2;
@@ -63,11 +64,12 @@ public class RobotContainer {
 
 
   private void configureBindings() {
-    new JoystickButton(xboxController, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 1, digitalInput)); // add digitalInput
+    new JoystickButton(xboxController2, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 0.75, digitalInput)); // add digitalInput
   //  System.out.println("configureBindings run");
-    new JoystickButton(xboxController, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, 1));
-    new JoystickButton(xboxController, Button.kA.value).whileTrue(new Shoot(shooter, 1));
-    new JoystickButton(xboxController, Button.kB.value).whileTrue(new Shoot(shooter, 0.38));
+    new JoystickButton(xboxController2, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, 1));
+    new JoystickButton(xboxController2, Button.kA.value).whileTrue(new Shoot(shooter, 0.55, 0.55));
+    new JoystickButton(xboxController2, Button.kB.value).whileTrue(new Shoot(shooter, 0.38, 0.38));
+    new JoystickButton(xboxController2, Button.kY.value).whileTrue(new IntakeForShooting(noteIntake, -1));
   }
 
   /**

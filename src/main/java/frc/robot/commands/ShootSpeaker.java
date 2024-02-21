@@ -11,7 +11,7 @@ public class ShootSpeaker extends SequentialCommandGroup {
   /** General shooting strategy so note won't get stuck while gradually allowing itself into the shooter. */
   public ShootSpeaker(Shooter shooter, double power) {
     // Use addRequirements() here to declare subsystem dependencies.
-    new Shoot(shooter, 0.1).withTimeout(0.2);
-    new Shoot(shooter, power).withTimeout(2);
+    new Shoot(shooter, 0.1, 0.1).withTimeout(0.2);
+    new Shoot(shooter, power, power).withTimeout(2);
   }
 }
