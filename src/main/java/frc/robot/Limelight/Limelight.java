@@ -18,32 +18,29 @@ public class Limelight {
     // SmartDashboard.putNumber("LimelightX", x);
     // SmartDashboard.putNumber("LimelightY", y);
     // SmartDashboard.putNumber("LimelightArea", area);
+    public void autoAimAutoRange() {
+        double KpAim = -0.1f;
+        double KpDistance = -0.1f;
+        double min_aim_command = 0.05f;
 
-    /* Aimbot
-        // turning control constants, to find sweet spot of
-        double kp = -0.1;
-        double min_command = 0.05;
-
-        if (GetRawButton(1)) {
-            // margin of error
+        if (joystick->GetRawButton(9)) {
             double heading_error = -tx;
-            // how much to change by, impacted by the turning constatns and how far off AprilTag is from tx
-            double steering_adjust = 0;
-            if (Math.abs(heading_error) > 1) {
-                if (heading_error < 0) steering_adjust = kp * heading_error + min_command;
-                else steering_adjust = kp * heading_error - min_command;
-            } 
-        }
-        
-        // tank drive turning 
-        left_drive(steering_adjust);
-        right_drive(-steering_adjust);
-    */
+            double distance_error = -ty;
+            double steering_adjust = 0.0f;
 
-    /* Estimate Distance
-        public double estimateDistance() {
-         
-            NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+            if (tx > 1.0) steering_adjust = KpAim*heading_error - min_aim_command;
+            else if (tx < -1.0) steering_adjust = KpAim*heading_error + min_aim_command;
+
+            double distance_adjust = KpDistance * distance_error;
+
+            left_command += steering_adjust + distance_adjust;
+            right_command -= steering_adjust + distance_adjust;
+        }
+    }
+    
+
+    // Estimate Distance
+        public double estimateDistance() {   
             NetworkTableEntry ty = table.getEntry("ty");
             double targetOffsetAngle_Vertical = ty.getDouble(0.0);
 
@@ -62,19 +59,5 @@ public class Limelight {
             //calculate distance
             double distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
         }
-    */
 
-    /* Drive into range
-        // distance control constant (again, to find sweet spot of)
-        double kpDistance = -0.1;
-        double currentDistance = estimateDistance();
-
-        if (getRawButton(2)) {
-            double distance_error = desired_distance - current_distance;
-            double driving_adjust = kpDistance * distance_error;
-
-            left_drive(driving_adjust);
-            right_drive(driving_adjust);
-        }
-     */
 }
