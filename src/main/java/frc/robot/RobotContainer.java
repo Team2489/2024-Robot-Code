@@ -15,6 +15,7 @@ import frc.robot.commands.IntakeOut;
 import frc.robot.commands.RedAuton2;
 import frc.robot.commands.RedAuton3;
 import frc.robot.commands.Shoot;
+import frc.robot.commands.Shoot2;
 import frc.robot.commands.ShootSpeaker;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
@@ -58,18 +59,21 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     dDrive.setDefaultCommand(new DriveArcadeCustomized(dDrive, xboxController::getLeftY, xboxController::getRightX, 0.3, 0.2, 0.8, xboxController));
-    chooser.setDefaultOption("Default Auto Command", autonomous1);
+    chooser.setDefaultOption("2 Note Center", redAuton2);
+    chooser.addOption("3 Note Center?", redAuton3);
+ //   chooser.addOption("Auton 2", redAuton2);
     SmartDashboard.putData(chooser);
   }
 
 
   private void configureBindings() {
-    new JoystickButton(xboxController2, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 0.75, digitalInput)); // add digitalInput
+    new JoystickButton(xboxController2, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, -0.5, digitalInput)); // add digitalInput
   //  System.out.println("configureBindings run");
-    new JoystickButton(xboxController2, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, 1));
-    new JoystickButton(xboxController2, Button.kA.value).whileTrue(new Shoot(shooter, 0.55, 0.55));
-    new JoystickButton(xboxController2, Button.kB.value).whileTrue(new Shoot(shooter, 0.38, 0.38));
+    new JoystickButton(xboxController2, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, -1));
+    new JoystickButton(xboxController2, Button.kA.value).whileTrue(new Shoot(shooter, 0.8, 0.8));
+    new JoystickButton(xboxController2, Button.kB.value).whileTrue(new Shoot(shooter, 0.35, 0.35));
     new JoystickButton(xboxController2, Button.kY.value).whileTrue(new IntakeForShooting(noteIntake, -1));
+    new JoystickButton(xboxController2, Button.kX.value).whileTrue(new Shoot2(shooter, 1, 1, -1, noteIntake));
   }
 
   /**

@@ -18,6 +18,7 @@ public class DriveAuton extends Command {
     this.driveTrain = driveTrain;
     this.speed = speed;
     this.rotation = rotation;
+    addRequirements(driveTrain);
   }
 
   // Called when the command is initially scheduled.
@@ -29,7 +30,7 @@ public class DriveAuton extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveTrain.arcadeDriveCustomized(1, 0);
+    driveTrain.arcadeDriveCustomized(speed, rotation);
   }
 
   // Called once the command ends or is interrupted.
