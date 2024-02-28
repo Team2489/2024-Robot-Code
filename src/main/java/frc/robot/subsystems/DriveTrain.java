@@ -57,6 +57,17 @@ public class DriveTrain extends SubsystemBase {
     leftFrontSpark.set(speed+rotation);
     leftBackSpark.set(speed+rotation);
   }
+
+  public void rightMotors(double speed) {
+    rightFrontSpark.set(speed);
+    rightBackSpark.set(speed);
+  }
+
+  public void leftMotors(double speed) {
+    leftFrontSpark.set(speed);
+    leftBackSpark.set(speed);
+  }
+
   public void stopMotors(){
     rightFrontSpark.set(0);
     rightBackSpark.set(0);
