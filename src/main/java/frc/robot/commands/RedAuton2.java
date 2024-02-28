@@ -4,8 +4,9 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
@@ -14,11 +15,19 @@ public class RedAuton2 extends SequentialCommandGroup {
   /** Creates a new RedAuton2. */
   public RedAuton2(DriveTrain driveTrain, Intake noteIntake, Shooter shooter, DigitalInput digitalInput) {
     addCommands(
-        new DriveAuton(driveTrain, 1, 1).withTimeout(0.5),
-        new ShootSpeaker(shooter, 1),
-        new DriveAuton(driveTrain, 1, -1).withTimeout(0.5),
-        new DriveAuton(driveTrain, 1, 0).withTimeout(5),
-        new IntakeIn(noteIntake, 1, digitalInput).withTimeout(1));
+      new Shoot(shooter, 1, 1).withTimeout(2),
+      new Shoot2(shooter, 1, 1, -1, noteIntake).withTimeout(2),
+    //  new IntakeIn(noteIntake, -1, digitalInput).withTimeout(5),
+       new ParallelCommandGroup(
+         new IntakeIn(noteIntake, -1, digitalInput).withTimeout(2),
+         new DriveAuton(driveTrain, 0.24, 0).withTimeout(0.9)
+         ),
+        new DriveAuton(driveTrain, -0.24, 0).withTimeout(0.8),
+        new Shoot(shooter, 1, 1).withTimeout(2),
+        new Shoot2(shooter, 1, 1, -1, noteIntake).withTimeout(2)
+    
+     
+       );
   }
 
 }

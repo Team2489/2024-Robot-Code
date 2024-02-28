@@ -15,7 +15,7 @@ public class BlueAuton3 extends SequentialCommandGroup {
   public BlueAuton3(DriveTrain driveTrain, Intake IntakeAuton, Shooter shooter, DigitalInput digitalInput) {
     addCommands(
         new DriveAuton(driveTrain, 0.5, -1).withTimeout(0.5),
-        new ShootSpeaker(shooter, 1),
+        //new ShootSpeaker(shooter, 1),
         new DriveAuton(driveTrain, 0.5, 1).withTimeout(0.5),
         new DriveAuton(driveTrain, 1, 0).withTimeout(5),
         new IntakeIn(IntakeAuton, 1, digitalInput));

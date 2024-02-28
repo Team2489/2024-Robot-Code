@@ -52,8 +52,8 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void arcadeDriveCustomized(double speed, double rotation){
-    rightFrontSpark.set(rotation-speed);
-    rightBackSpark.set(rotation-speed);
+    rightFrontSpark.set(speed-rotation);
+    rightBackSpark.set(speed-rotation);
     leftFrontSpark.set(speed+rotation);
     leftBackSpark.set(speed+rotation);
   }

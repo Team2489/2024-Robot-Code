@@ -5,19 +5,40 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 
 public class RedAuton3 extends SequentialCommandGroup {
-  /** Creates a new RedAuton3. */
-  public RedAuton3(DriveTrain driveTrain, Intake IntakeAuton, Shooter shooter, DigitalInput digitalInput) {
+  /** Creates a new RedAuton2. */
+  public RedAuton3(DriveTrain driveTrain, Intake noteIntake, Shooter shooter, DigitalInput digitalInput) {
     addCommands(
-        new DriveAuton(driveTrain, 0.5, 1).withTimeout(0.5),
-        new ShootSpeaker(shooter, 1),
-        new DriveAuton(driveTrain, 0.5, -1).withTimeout(0.5),
-        new DriveAuton(driveTrain, 1, 0).withTimeout(5),
-        new IntakeIn(IntakeAuton, 1, digitalInput));
+    //   new Shoot(shooter, 1, 1).withTimeout(2),
+    //   new Shoot2(shooter, 1, 1, -1, noteIntake).withTimeout(2),
+    // //  new IntakeIn(noteIntake, -1, digitalInput).withTimeout(5),
+    //    new ParallelCommandGroup(
+    //      new IntakeIn(noteIntake, -1, digitalInput).withTimeout(2),
+    //      new DriveAuton(driveTrain, 0.24, 0).withTimeout(0.9)
+    //      ),
+    //     new DriveAuton(driveTrain, -0.24, 0).withTimeout(0.8),
+    //     new Shoot(shooter, 1, 1).withTimeout(2),
+    //     new Shoot2(shooter, 1, 1, -1, noteIntake).withTimeout(2),
+
+    //     new DriveAuton(driveTrain, 0.2, 0).withTimeout(0.3),
+
+    //     new ParallelCommandGroup(
+    //       new IntakeIn(noteIntake, -1, digitalInput).withTimeout(2),
+    //       new DriveAuton(driveTrain, 0.5, 0.25).withTimeout(2)
+
+    //     ),
+
+        
+        new DriveAuton(driveTrain, 0.7, 0.01).withTimeout(1.5)
+
+     
+       );
   }
+
 }

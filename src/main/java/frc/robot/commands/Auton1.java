@@ -11,6 +11,6 @@ public class Auton1 extends SequentialCommandGroup {
   /** Creates a new RedAuton1. */
   public Auton1(DriveTrain driveTrain) {
     addCommands(
-      new DriveAuton(driveTrain, 1, 0).withTimeout(5));
+      new DriveAuton(driveTrain, -1, 0));
   }
 }
