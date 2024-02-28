@@ -2,12 +2,15 @@ package frc.robot.Limelight;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import frc.robot.subsystems.DriveTrain;
 
 public class Limelight {
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tx = table.getEntry("tx");
     NetworkTableEntry ty = table.getEntry("ty");
     NetworkTableEntry ta = table.getEntry("ta");
+
+    DriveTrain drivetrain = new DriveTrain();
 
     // read values periodically
     double x = tx.getDouble(0.0);
@@ -19,22 +22,24 @@ public class Limelight {
     // SmartDashboard.putNumber("LimelightY", y);
     // SmartDashboard.putNumber("LimelightArea", area);
     public void autoAimAutoRange() {
-        double KpAim = -0.1f;
-        double KpDistance = -0.1f;
-        double min_aim_command = 0.05f;
+        double KpAim = -0.1;
+        double KpDistance = -0.1;
+        double min_aim_command = 0.05;
 
-        if (joystick->GetRawButton(9)) {
+        if () {
             double heading_error = -tx;
             double distance_error = -ty;
-            double steering_adjust = 0.0f;
+            double steering_adjust = 0.0;
 
             if (tx > 1.0) steering_adjust = KpAim*heading_error - min_aim_command;
             else if (tx < -1.0) steering_adjust = KpAim*heading_error + min_aim_command;
 
             double distance_adjust = KpDistance * distance_error;
 
-            left_command += steering_adjust + distance_adjust;
-            right_command -= steering_adjust + distance_adjust;
+            drivetrain.rightFrontSpark.set(steering_adjust + distance_adjust);
+            drivetrain.rightBackSpark.set(steering_adjust + distance_adjust);
+            drivetrain.leftFrontSpark.set(-1*(steering_adjust + distance_adjust));
+            drivetrain.leftBackSpark.set(-1*(steering_adjust + distance_adjust));
         }
     }
     
@@ -57,7 +62,7 @@ public class Limelight {
             double angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
 
             //calculate distance
-            double distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
+            return (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
         }
 
 }
