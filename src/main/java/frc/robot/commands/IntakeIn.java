@@ -36,7 +36,6 @@ public class IntakeIn extends Command {
     } else {
       noteIntake.intakeRun(power);
     }
-  //  noteIntake.intakeRun(power);
   }
   // Called once the command ends or is interrupted.
   @Override

@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANSparkLowLevel.MotorType;;
+
 
 
 public class DriveTrain extends SubsystemBase {
@@ -52,8 +53,8 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void arcadeDriveCustomized(double speed, double rotation){
-    rightFrontSpark.set(speed-rotation);
-    rightBackSpark.set(speed-rotation);
+    rightFrontSpark.set(rotation-speed);
+    rightBackSpark.set(rotation-speed);
     leftFrontSpark.set(speed+rotation);
     leftBackSpark.set(speed+rotation);
   }

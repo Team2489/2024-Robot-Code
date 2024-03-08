@@ -7,7 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 
 public class Intake extends SubsystemBase {
   public CANSparkMax frontIntake;
@@ -15,8 +15,8 @@ public class Intake extends SubsystemBase {
 
   /** Creates a new Intake. */
   public Intake() {
-    frontIntake = new CANSparkMax(Constants.FRONT_INTAKE, MotorType.kBrushed);
-    backIntake = new CANSparkMax(Constants.BACK_INTAKE, MotorType.kBrushed);
+    frontIntake = new CANSparkMax(Constants.FRONT_INTAKE, MotorType.kBrushless);
+    backIntake = new CANSparkMax(Constants.BACK_INTAKE, MotorType.kBrushless);
 
     intakeRun(0);
   }

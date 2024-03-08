@@ -6,17 +6,19 @@ package frc.robot;
 
 
 import frc.robot.commands.Auton1;
-import frc.robot.commands.BlueAuton2;
-import frc.robot.commands.BlueAuton3;
+import frc.robot.commands.OneNoteRightSide;
+import frc.robot.commands.OneNoteRightSideDelay;
+import frc.robot.commands.OneNoteLeftSide;
+import frc.robot.commands.OneNoteLeftSideDelay;
 import frc.robot.commands.DriveArcadeCustomized;
 import frc.robot.commands.IntakeForShooting;
 import frc.robot.commands.IntakeIn;
 import frc.robot.commands.IntakeOut;
 import frc.robot.commands.RedAuton2;
 import frc.robot.commands.RedAuton3;
-import frc.robot.commands.Shoot;
-import frc.robot.commands.Shoot2;
-import frc.robot.commands.ShootSpeaker;
+import frc.robot.commands.ShootAuto;
+import frc.robot.commands.ShootSequential;
+import frc.robot.commands.ShootSequentialAmp;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -48,10 +50,13 @@ public class RobotContainer {
   SendableChooser<Command> chooser = new SendableChooser<>();
 
   Auton1 autonomous1 = new Auton1(dDrive);
-  BlueAuton2 blueAuton2 = new BlueAuton2(dDrive, noteIntake, shooter, digitalInput);
-  BlueAuton3 blueAuton3 = new BlueAuton3(dDrive, noteIntake, shooter, digitalInput);
+  OneNoteRightSide OneNoteRightSide = new OneNoteRightSide(dDrive, noteIntake, shooter, digitalInput);
+  OneNoteLeftSide OneNoteLeftSide = new OneNoteLeftSide(dDrive, noteIntake, shooter, digitalInput);
   RedAuton2 redAuton2 = new RedAuton2(dDrive, noteIntake, shooter, digitalInput);
   RedAuton3 redAuton3 = new RedAuton3(dDrive, noteIntake, shooter, digitalInput);
+  ShootAuto ShootAuto = new ShootAuto(dDrive, noteIntake, shooter, digitalInput);
+  OneNoteLeftSideDelay oneNoteLeftSideDelay = new OneNoteLeftSideDelay(dDrive, noteIntake, shooter, digitalInput);
+  OneNoteRightSideDelay oneNoteRightSideDelay = new OneNoteRightSideDelay(dDrive, noteIntake, shooter, digitalInput);
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -61,19 +66,23 @@ public class RobotContainer {
     dDrive.setDefaultCommand(new DriveArcadeCustomized(dDrive, xboxController::getLeftY, xboxController::getRightX, 0.3, 0.2, 0.8, xboxController));
     chooser.setDefaultOption("2 Note Center", redAuton2);
     chooser.addOption("3 Note Center?", redAuton3);
- //   chooser.addOption("Auton 2", redAuton2);
+    chooser.addOption("One Note Right Side", OneNoteRightSide);
+    chooser.addOption("One Note Left Side", OneNoteLeftSide);
+    chooser.addOption("Only Shoot", ShootAuto);
+    chooser.addOption("One Note Right Side Delay 5 Seconds", oneNoteRightSideDelay);
+    chooser.addOption("One Note Left Side Delay 5 Seconds", oneNoteLeftSideDelay);
     SmartDashboard.putData(chooser);
   }
 
 
   private void configureBindings() {
-    new JoystickButton(xboxController2, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, -0.5, digitalInput)); // add digitalInput
-  //  System.out.println("configureBindings run");
-    new JoystickButton(xboxController2, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, -1));
-    new JoystickButton(xboxController2, Button.kA.value).whileTrue(new Shoot(shooter, 0.8, 0.8));
-    new JoystickButton(xboxController2, Button.kB.value).whileTrue(new Shoot(shooter, 0.35, 0.35));
-    new JoystickButton(xboxController2, Button.kY.value).whileTrue(new IntakeForShooting(noteIntake, -1));
-    new JoystickButton(xboxController2, Button.kX.value).whileTrue(new Shoot2(shooter, 1, 1, -1, noteIntake));
+    new JoystickButton(xboxController2, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 0.5, digitalInput)); // add digitalInput
+    new JoystickButton(xboxController2, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, -0.5));
+    new JoystickButton(xboxController2, Button.kB.value).whileTrue(new ShootSequentialAmp(noteIntake, shooter));
+    new JoystickButton(xboxController2, Button.kY.value).whileTrue(new IntakeForShooting(noteIntake, 1));
+    new JoystickButton(xboxController2, Button.kX.value).whileTrue(new ShootSequential(noteIntake, shooter));
+    //new JoystickButton(xboxController2, Button.kA.value).whileTrue(new Shoot(shooter, 0.8, 0.8));
+
   }
 
   /**

@@ -30,8 +30,6 @@ public class IntakeForShooting extends Command {
   @Override
   public void execute() {
     noteIntake.intakeRun(power);
-  
-  //  noteIntake.intakeRun(power);
   }
   // Called once the command ends or is interrupted.
   @Override

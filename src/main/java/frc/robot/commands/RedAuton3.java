@@ -15,29 +15,10 @@ public class RedAuton3 extends SequentialCommandGroup {
   /** Creates a new RedAuton2. */
   public RedAuton3(DriveTrain driveTrain, Intake noteIntake, Shooter shooter, DigitalInput digitalInput) {
     addCommands(
-    //   new Shoot(shooter, 1, 1).withTimeout(2),
-    //   new Shoot2(shooter, 1, 1, -1, noteIntake).withTimeout(2),
-    // //  new IntakeIn(noteIntake, -1, digitalInput).withTimeout(5),
-    //    new ParallelCommandGroup(
-    //      new IntakeIn(noteIntake, -1, digitalInput).withTimeout(2),
-    //      new DriveAuton(driveTrain, 0.24, 0).withTimeout(0.9)
-    //      ),
-    //     new DriveAuton(driveTrain, -0.24, 0).withTimeout(0.8),
-    //     new Shoot(shooter, 1, 1).withTimeout(2),
-    //     new Shoot2(shooter, 1, 1, -1, noteIntake).withTimeout(2),
-
-    //     new DriveAuton(driveTrain, 0.2, 0).withTimeout(0.3),
-
-    //     new ParallelCommandGroup(
-    //       new IntakeIn(noteIntake, -1, digitalInput).withTimeout(2),
-    //       new DriveAuton(driveTrain, 0.5, 0.25).withTimeout(2)
-
-    //     ),
-
-        
-        new DriveAuton(driveTrain, 0.7, 0.01).withTimeout(1.5)
-
-     
+    new DriveAuton(driveTrain, 0.24, 0.17).withTimeout(1),
+    new DriveAuton(driveTrain, 0.24, 0).withTimeout(0.3),
+    new IntakeIn(noteIntake, -1, digitalInput).withTimeout(2),
+    new DriveAuton(driveTrain, -0.24, 0.17).withTimeout(1)
        );
   }
 

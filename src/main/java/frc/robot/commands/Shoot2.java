@@ -19,7 +19,6 @@ public class Shoot2 extends Command {
   public Shoot2(Shooter shooter, double runFrontRollerPower, double runBackRollerPower, double power, Intake noteIntake) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.shooter = shooter;
-    // this.power = power;
     this.runFrontRollerPower = runFrontRollerPower;
     this.runBackRollerPower = runBackRollerPower;
     this.power = power;
