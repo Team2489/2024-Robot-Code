@@ -44,7 +44,7 @@ public class DriveArcadeCustomized extends Command {
     double speeds = speed.getAsDouble();
     double rotations = rotation.getAsDouble();
     double currentLimit = 0.6;
-    double currentRotationLimit = 0.3;
+    double currentRotationLimit = 0.4;
     double speedInterval  = 0.08;
     
     if(xboxController.getRightBumper()){

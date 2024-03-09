@@ -58,7 +58,6 @@ public class RobotContainer {
   OneNoteLeftSideDelay oneNoteLeftSideDelay = new OneNoteLeftSideDelay(dDrive, noteIntake, shooter, digitalInput);
   OneNoteRightSideDelay oneNoteRightSideDelay = new OneNoteRightSideDelay(dDrive, noteIntake, shooter, digitalInput);
 
-
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
@@ -71,12 +70,13 @@ public class RobotContainer {
     chooser.addOption("Only Shoot", ShootAuto);
     chooser.addOption("One Note Right Side Delay 5 Seconds", oneNoteRightSideDelay);
     chooser.addOption("One Note Left Side Delay 5 Seconds", oneNoteLeftSideDelay);
+    chooser.addOption("literally nothing", autonomous1);
     SmartDashboard.putData(chooser);
   }
 
 
   private void configureBindings() {
-    new JoystickButton(xboxController2, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 0.5, digitalInput)); // add digitalInput
+    new JoystickButton(xboxController2, Button.kRightBumper.value).whileTrue(new IntakeIn(noteIntake, 0.75, digitalInput)); // add digitalInput
     new JoystickButton(xboxController2, Button.kLeftBumper.value).whileTrue(new IntakeOut(noteIntake, -0.5));
     new JoystickButton(xboxController2, Button.kB.value).whileTrue(new ShootSequentialAmp(noteIntake, shooter));
     new JoystickButton(xboxController2, Button.kY.value).whileTrue(new IntakeForShooting(noteIntake, 1));

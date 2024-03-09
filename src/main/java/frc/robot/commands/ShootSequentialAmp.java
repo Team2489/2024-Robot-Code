@@ -12,7 +12,7 @@ public class ShootSequentialAmp extends SequentialCommandGroup {
   /** Creates a new BlueAuton1. */
   public ShootSequentialAmp(Intake noteIntake, Shooter shooter) {
     addCommands(
-      new Shoot(shooter, 0.36, 0.31).withTimeout(2),
+      new Shoot(shooter, 0.4, 0.52).withTimeout(2),
       new IntakeForShooting(noteIntake, 1).withTimeout(1)
     );
   }

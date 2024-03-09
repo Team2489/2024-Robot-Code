@@ -17,7 +17,7 @@ public class RedAuton3 extends SequentialCommandGroup {
     addCommands(
     new DriveAuton(driveTrain, 0.24, 0.17).withTimeout(1),
     new DriveAuton(driveTrain, 0.24, 0).withTimeout(0.3),
-    new IntakeIn(noteIntake, -1, digitalInput).withTimeout(2),
+    new IntakeIn(noteIntake, 1, digitalInput).withTimeout(2),
     new DriveAuton(driveTrain, -0.24, 0.17).withTimeout(1)
        );
   }

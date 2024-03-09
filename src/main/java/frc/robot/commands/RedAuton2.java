@@ -16,15 +16,15 @@ public class RedAuton2 extends SequentialCommandGroup {
   public RedAuton2(DriveTrain driveTrain, Intake noteIntake, Shooter shooter, DigitalInput digitalInput) {
     addCommands(
       new Shoot(shooter, 1, 1).withTimeout(2),
-      new Shoot2(shooter, 1, 1, -1, noteIntake).withTimeout(2),
+      new Shoot2(shooter, 1, 1, 1, noteIntake).withTimeout(2),
     //  new IntakeIn(noteIntake, -1, digitalInput).withTimeout(5),
        new ParallelCommandGroup(
-         new IntakeIn(noteIntake, -1, digitalInput).withTimeout(2),
+         new IntakeIn(noteIntake, 1, digitalInput).withTimeout(2),
          new DriveAuton(driveTrain, 0.24, 0).withTimeout(0.9)
          ),
         new DriveAuton(driveTrain, -0.24, 0).withTimeout(0.8),
         new Shoot(shooter, 1, 1).withTimeout(2),
-        new Shoot2(shooter, 1, 1, -1, noteIntake).withTimeout(2)
+        new Shoot2(shooter, 1, 1, 1, noteIntake).withTimeout(2)
 
 
      
