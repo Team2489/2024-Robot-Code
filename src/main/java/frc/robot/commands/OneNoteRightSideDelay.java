@@ -15,7 +15,7 @@ public class OneNoteRightSideDelay extends SequentialCommandGroup {
   public OneNoteRightSideDelay(DriveTrain driveTrain, Intake noteIntake, Shooter shooter, DigitalInput digitalInput) {
     addCommands(
       new Shoot(shooter, 1, 1).withTimeout(2),
-      new Shoot2(shooter, 1, 1, 1, noteIntake).withTimeout(2),
+      new ShootIntakeAuto(shooter, 1, 1, 1, noteIntake).withTimeout(2),
       new DriveAuton(driveTrain, 0, 0).withTimeout(4),
       new DriveAuton(driveTrain, 0.24, -0.12).withTimeout(1.5)
     

@@ -7,9 +7,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DriveTrain;
 
-public class Auton1 extends SequentialCommandGroup {
+public class StayAuton extends SequentialCommandGroup {
   /** Creates a new RedAuton1. */
-  public Auton1(DriveTrain driveTrain) {
+  public StayAuton(DriveTrain driveTrain) {
     addCommands(
       new DriveAuton(driveTrain, 0, 0));
   }

@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Intake;
 
-public class Shoot2 extends Command {
+public class ShootIntakeAuto extends Command {
   Shooter shooter;
   Intake noteIntake;
   double power = 0.0;
@@ -16,7 +16,7 @@ public class Shoot2 extends Command {
   double runBackRollerPower = 0.0;
   // base class for shooting speaker and amp(coming soon)
 
-  public Shoot2(Shooter shooter, double runFrontRollerPower, double runBackRollerPower, double power, Intake noteIntake) {
+  public ShootIntakeAuto(Shooter shooter, double runFrontRollerPower, double runBackRollerPower, double power, Intake noteIntake) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.shooter = shooter;
     this.runFrontRollerPower = runFrontRollerPower;

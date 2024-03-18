@@ -5,7 +5,7 @@
 package frc.robot;
 
 
-import frc.robot.commands.Auton1;
+import frc.robot.commands.StayAuton;
 import frc.robot.commands.OneNoteRightSide;
 import frc.robot.commands.OneNoteRightSideDelay;
 import frc.robot.commands.OneNoteLeftSide;
@@ -14,7 +14,7 @@ import frc.robot.commands.DriveArcadeCustomized;
 import frc.robot.commands.IntakeForShooting;
 import frc.robot.commands.IntakeIn;
 import frc.robot.commands.IntakeOut;
-import frc.robot.commands.RedAuton2;
+import frc.robot.commands.TwoNoteAuton;
 import frc.robot.commands.RedAuton3;
 import frc.robot.commands.ShootAuto;
 import frc.robot.commands.ShootSequential;
@@ -49,10 +49,10 @@ public class RobotContainer {
 
   SendableChooser<Command> chooser = new SendableChooser<>();
 
-  Auton1 autonomous1 = new Auton1(dDrive);
+  StayAuton stayAuton = new StayAuton(dDrive);
   OneNoteRightSide OneNoteRightSide = new OneNoteRightSide(dDrive, noteIntake, shooter, digitalInput);
   OneNoteLeftSide OneNoteLeftSide = new OneNoteLeftSide(dDrive, noteIntake, shooter, digitalInput);
-  RedAuton2 redAuton2 = new RedAuton2(dDrive, noteIntake, shooter, digitalInput);
+  TwoNoteAuton twoNoteAuton = new TwoNoteAuton(dDrive, noteIntake, shooter, digitalInput);
   RedAuton3 redAuton3 = new RedAuton3(dDrive, noteIntake, shooter, digitalInput);
   ShootAuto ShootAuto = new ShootAuto(dDrive, noteIntake, shooter, digitalInput);
   OneNoteLeftSideDelay oneNoteLeftSideDelay = new OneNoteLeftSideDelay(dDrive, noteIntake, shooter, digitalInput);
@@ -63,14 +63,14 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     dDrive.setDefaultCommand(new DriveArcadeCustomized(dDrive, xboxController::getLeftY, xboxController::getRightX, 0.3, 0.2, 0.8, xboxController));
-    chooser.setDefaultOption("2 Note Center", redAuton2);
+    chooser.setDefaultOption("2 Note Center", twoNoteAuton);
     chooser.addOption("3 Note Center?", redAuton3);
     chooser.addOption("One Note Right Side", OneNoteRightSide);
     chooser.addOption("One Note Left Side", OneNoteLeftSide);
     chooser.addOption("Only Shoot", ShootAuto);
     chooser.addOption("One Note Right Side Delay 5 Seconds", oneNoteRightSideDelay);
     chooser.addOption("One Note Left Side Delay 5 Seconds", oneNoteLeftSideDelay);
-    chooser.addOption("literally nothing", autonomous1);
+    chooser.addOption("literally nothing", stayAuton);
     SmartDashboard.putData(chooser);
   }
 
